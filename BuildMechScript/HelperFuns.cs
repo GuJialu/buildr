@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class HelperFuns
 {
+    static string[] wordsToCerser = new string[2] { "badword", "drowdab" };
 
     public static void SetCubeMaterial(GameObject cube, Material newMaterial)
     {
@@ -50,7 +51,7 @@ public class HelperFuns
     public static bool LoadShip(Transform theShipTrans, string shipName)
     {
 
-        string path = Application.persistentDataPath + "\\" + shipName + ".json";
+        string path = Application.persistentDataPath + "/" + shipName + ".json";
         Debug.Log(path);
 
         if (!File.Exists(path))
@@ -91,6 +92,14 @@ public class HelperFuns
                 //Debug.Log(c.materialName);
                 HelperFuns.SetCubeMaterial(o, (Material)Resources.Load(c.materialName));
             }
+        }
+    }
+
+    public static void WordCenser(string str)
+    {
+        foreach(string word in wordsToCerser)
+        {
+            str.Replace("word", "****");
         }
     }
 }

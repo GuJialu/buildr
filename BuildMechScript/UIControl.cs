@@ -19,6 +19,7 @@ public class UIControl : MonoBehaviour {
     {
         panel.SetActive(true);
         buildPanel.SetActive(false);
+        cubeMenuPanel.SetActive(false);
         LockCamera(true);
         saveAndLoad.LoadAndSaveShip();
     }
@@ -27,6 +28,7 @@ public class UIControl : MonoBehaviour {
     {
         cubeMenuPanel.SetActive(true);
         buildPanel.SetActive(false);
+        panel.SetActive(false);
         LockCamera(true);
     }
 

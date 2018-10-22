@@ -140,14 +140,14 @@ public class SaveAndLoad : MonoBehaviour {
         string path = Application.persistentDataPath;
         Debug.Log(Application.persistentDataPath);
         string[] fileArray = Directory.GetFiles(path, "*.json");
-
-        foreach(string fileName in fileArray)
+        foreach (string fileName in fileArray)
         {
+
             GameObject b = (GameObject)Instantiate(Resources.Load("LoadButton"));
             b.transform.SetParent(shipScroll.GetComponent<VerticalLayoutGroup>().transform);
             //b.transform.position += i*60*Vector3.down;
             Debug.Log(b);
-            string shipName = fileName.Substring(fileName.IndexOf('\\')+1, fileName.Length-6- fileName.IndexOf('\\'));
+            string shipName = fileName.Substring(fileName.LastIndexOf('/')+1, fileName.Length-6- fileName.LastIndexOf('/'));
             b.GetComponent<Button>().onClick.AddListener(delegate { PutNameInInPutField(shipName); });
             b.GetComponentInChildren<Text>().text = shipName;
         }
@@ -167,7 +167,7 @@ public class SaveAndLoad : MonoBehaviour {
 
     public void SaveShip()
     {
-        string path = Application.persistentDataPath + "\\" + shipNameInput.text + ".json";
+        string path = Application.persistentDataPath + "/" + shipNameInput.text + ".json";
         if (File.Exists(path))
         {
             OverWriteConfirm.SetActive(true);
@@ -178,7 +178,7 @@ public class SaveAndLoad : MonoBehaviour {
 
     public void WriteShipToFile()
     {
-        string path = Application.persistentDataPath + "\\" + shipNameInput.text + ".json";
+        string path = Application.persistentDataPath + "/" + shipNameInput.text + ".json";
         string json = ShipToJson();
         File.WriteAllText(path, json);
         OverWriteConfirm.SetActive(false);

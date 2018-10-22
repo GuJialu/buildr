@@ -125,7 +125,7 @@ public class BlockPlacing : MonoBehaviour
         }
 
         //mouse input for test only
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
+        /*Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
         Debug.DrawRay(ray.origin, ray.direction * 1011, Color.green);
         RaycastHit hit;
         if (Input.GetMouseButtonDown(0) && Physics.Raycast(ray, out hit))
@@ -222,6 +222,7 @@ public class BlockPlacing : MonoBehaviour
                 currentBlock.transform.localScale = afterScaling;
             }
         }
+        */
 
         if (currentBlock)
         {
